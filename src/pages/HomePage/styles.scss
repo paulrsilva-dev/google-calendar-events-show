@@ -1,0 +1,26 @@
+@import '../../styles/colors';
+
+.homepage {
+  text-align: center;
+
+  h1 {
+    color: lighten(#000, 20%);
+    font-weight: normal;
+  }
+
+  button {
+    background: $blue-color;
+    border: 1px solid $blue-color;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+
+    &:hover,
+    &:active {
+      background: white;
+      color: $blue-color;
+    }
+  }
+}
