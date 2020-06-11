@@ -1,0 +1,47 @@
+@import '../../styles/colors';
+
+.event {
+  max-width: 620px;
+  margin: 20px auto;
+  border: 1px solid $gray-color;
+  padding: 20px;
+  border-radius: 10px;
+
+  .date {
+    width: 15%;
+    display: inline-block;
+    margin-right: 20px;
+    text-align: center;
+
+    p {
+      margin: 0;
+      margin-bottom: 7px;
+    }
+  };
+
+  .info {
+    width: 70%;
+    display: inline-block;
+    border-left: 1px solid $gray-color;
+    padding-left: 20px;
+
+    p {
+      margin: 0;
+      margin-bottom: 10px;
+    }
+
+    .time {
+      margin-bottom: 10px;
+    }
+
+    .delete {
+      color: $red-color;
+      cursor: pointer;
+    }
+
+    .icon {
+      width: 14px;
+      margin-right: 10px;
+    }
+  };
+};

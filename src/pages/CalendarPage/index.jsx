@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { signOut } from '../../store/actions/auth';
+import { getEvents } from '../../store/actions/getEvents';
 
-const CalendarPage = ({ signOut }) => {
+import CalendarHeader from '../../components/CalendarHeader';
+import EventsList from '../../components/EventsList';
+
+const CalendarPage = ({ getEvents }) => {
+  useEffect(() => {
+    getEvents();
+  }, [getEvents]);
+
   return (
     <>
-      <div>Calendar Page</div>
-      <button onClick={signOut}>Sign Out</button>
+      <CalendarHeader />
+      <EventsList />
     </>
   )
-}
+};
 
 const mapDispatchToProps = dispatch => ({
-  signOut: () => dispatch(signOut())
-})
+  getEvents: () => dispatch(getEvents())
+});
 
 export default connect(null, mapDispatchToProps)(CalendarPage);
