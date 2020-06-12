@@ -6,7 +6,13 @@ import Event from '../Event';
 const EventsList = ({ events }) => {
   return (
     <>
-      {events && events.map(event => <Event key={event.id} event={event} />)}
+      {events.length === 0 ?
+        <p style={{ textAlign: 'center' }}>
+          You don't have upcoming events. Rest a little <span className='smile' role='img' aria-label='smile'>😊</span>
+        </p>
+        :
+        events && events.map(event => <Event key={event.id} event={event} />)
+      }
     </>
   )
 };
