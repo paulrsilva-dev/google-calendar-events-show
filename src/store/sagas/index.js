@@ -7,12 +7,14 @@ import {
 } from './auth';
 
 import { onGetEvents } from './getEvents';
+import { onDeleteEvent } from './deleteEvent';
 
 export default function* rootSaga() {
   yield all([
     call(onLoadClient),
     call(onSignIn),
     call(onSignOut),
-    call(onGetEvents)
+    call(onGetEvents),
+    call(onDeleteEvent)
   ]);
 }
