@@ -1,0 +1,43 @@
+@import '../../styles/colors';
+@import '../../styles/utilities';
+
+.add-event-form {
+  text-align: center;
+
+  .error {
+    color: $red-color;
+  }
+
+  form {
+    input,
+    button {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 25px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    
+    input {
+      width: 300px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid $gray-color;
+
+      &:hover,
+      &:focus,
+      &:active {
+        border-bottom: 1px solid $blue-color;
+      }
+    }
+
+    button {
+      @extend %blue-button;
+      width: 320px;
+    }
+  }
+
+  .time-zone {
+    font-size: 12px;
+  }
+}
