@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 import './styles.scss';
 
 import { checkInputDates } from '../../common';
+import { addEvent } from '../../store/actions/addEvent';
 
-const AddEventForm = () => {
+const AddEventForm = ({ addEvent, requestError }) => {
   const [eventSummary, setEventSummary] = useState('');
   const [eventStart, setEventStart] = useState('');
   const [eventEnd, setEventEnd] = useState('');
@@ -16,7 +18,7 @@ const AddEventForm = () => {
     if (e.target.name === 'eventEnd') setEventEnd(e.target.value);
   };
 
-  const handleAddEvent = async (e) => {
+  const handleAddEvent = e => {
     e.preventDefault();
     const startDateBeforeEndDate = checkInputDates(eventStart, eventEnd);
     
@@ -32,9 +34,8 @@ const AddEventForm = () => {
           'timeZone': 'Europe/Zagreb'
         }
       };
-      console.log('handleAddEvent - add this event', event);
 
-      // TODO: add event request
+      addEvent(event);
       resetForm();
     } else {
       setErrorMessage('Please check inserted dates.');
@@ -51,6 +52,7 @@ const AddEventForm = () => {
   return (
     <div className='add-event-form'>
       {errorMessage && <p className='error'>{errorMessage}</p>}
+      {requestError && <p className='error'>{requestError}</p>}
       <form onSubmit={handleAddEvent}>
         <input
           name='eventSummary'
@@ -81,4 +83,12 @@ const AddEventForm = () => {
   )
 };
 
-export default AddEventForm;
+const mapStateToProps = ({ newEvent: { error } }) => ({
+  requestError: error
+});
+
+const mapDispatchToProps = dispatch => ({
+  addEvent: event => dispatch(addEvent(event))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddEventForm);

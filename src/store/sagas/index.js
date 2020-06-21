@@ -8,6 +8,7 @@ import {
 
 import { onGetEvents } from './getEvents';
 import { onDeleteEvent } from './deleteEvent';
+import { onAddEvent } from './addEvent';
 
 export default function* rootSaga() {
   yield all([
@@ -15,6 +16,7 @@ export default function* rootSaga() {
     call(onSignIn),
     call(onSignOut),
     call(onGetEvents),
-    call(onDeleteEvent)
+    call(onDeleteEvent),
+    call(onAddEvent)
   ]);
 }
