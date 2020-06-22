@@ -1,8 +1,31 @@
 @import '../../styles/colors';
+@import '../../styles/utilities';
 
 header {
   text-align: center;
+  max-width: 662px;
+  margin: 0 auto;
+
   h1 {
     color: $blue-color;
+    margin-bottom: 40px;
+  }
+
+  select {
+    float: left;
+    @extend %basic-button;
+  }
+
+  button {
+    @extend %basic-button;
+    padding: 0 8px;
+
+    &.add-new {
+      margin-right: 40px;
+    }
+  
+    &.sign-out {
+      float: right;
+    }
   }
 }

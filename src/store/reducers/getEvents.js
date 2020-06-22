@@ -6,6 +6,7 @@ import {
 
 const INITIAL_STATE = {
   events: [],
+  numberOfDays: 7,
   error: null
 };
 
@@ -16,7 +17,8 @@ const getEventsReducer = (state = INITIAL_STATE, action) => {
     case GET_EVENTS_SUCCESS:
       return {
         ...newState,
-        events: action.events,
+        events: action.payload.events,
+        numberOfDays: action.payload.numberOfDays,
         error: null
       }
     case GET_EVENTS_ERROR:
@@ -28,6 +30,7 @@ const getEventsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...newState,
         events: [],
+        numberOfDays: 7,
         error: null
       }
     default:

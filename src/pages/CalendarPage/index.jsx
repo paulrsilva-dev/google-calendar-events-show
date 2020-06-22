@@ -6,10 +6,10 @@ import { getEvents } from '../../store/actions/getEvents';
 import CalendarHeader from '../../components/CalendarHeader';
 import EventsList from '../../components/EventsList';
 
-const CalendarPage = ({ getEvents }) => {
+const CalendarPage = ({ getEvents, numberOfDays }) => {
   useEffect(() => {
-    getEvents();
-  }, [getEvents]);
+    getEvents(numberOfDays);
+  }, [getEvents, numberOfDays]);
 
   return (
     <>
@@ -19,8 +19,12 @@ const CalendarPage = ({ getEvents }) => {
   )
 };
 
-const mapDispatchToProps = dispatch => ({
-  getEvents: () => dispatch(getEvents())
+const mapStateToProps = ({ events: { numberOfDays } }) => ({
+  numberOfDays
 });
 
-export default connect(null, mapDispatchToProps)(CalendarPage);
+const mapDispatchToProps = dispatch => ({
+  getEvents: numberOfDays => dispatch(getEvents(numberOfDays))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarPage);
