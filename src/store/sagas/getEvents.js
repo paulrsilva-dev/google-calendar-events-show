@@ -8,7 +8,7 @@ import {
 import { gapi } from '../../config';
 
 function* getEvents(action) {
-  const { numberOfDays } = action;
+  const { numberOfDays = 7 } = action;
 
   const todayAtMidnight = new Date(new Date().setHours(0,0,0,0)).toISOString();
   let timeMax = new Date(new Date().setHours(0,0,0,0));
