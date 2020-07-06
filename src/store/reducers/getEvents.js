@@ -1,7 +1,8 @@
 import {
   GET_EVENTS_SUCCESS,
   GET_EVENTS_ERROR,
-  SIGN_OUT_SUCCESS
+  SIGN_OUT_SUCCESS,
+  SIGN_IN_SUCCESS,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -27,6 +28,7 @@ const getEventsReducer = (state = INITIAL_STATE, action) => {
         error: action.error
       }
     case SIGN_OUT_SUCCESS:
+    case SIGN_IN_SUCCESS:
       return {
         ...newState,
         events: [],
