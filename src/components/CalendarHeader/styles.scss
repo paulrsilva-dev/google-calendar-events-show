@@ -1,5 +1,6 @@
 @import '../../styles/colors';
 @import '../../styles/utilities';
+@import '../../styles/mediaQueries';
 
 header {
   text-align: center;
@@ -26,6 +27,18 @@ header {
   
     &.sign-out {
       float: right;
+    }
+  }
+}
+
+@include mobile {
+  header {
+    padding: 0 10px;
+
+    button {  
+      &.add-new {
+        margin-right: 0px;
+      }
     }
   }
 }
