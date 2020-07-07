@@ -6,6 +6,7 @@ import {
 } from '../actions/types';
 
 import { gapi } from '../../config';
+import { groupByDay, groupByWeek } from '../../common/groupEvents';
 
 function* getEvents(action) {
   const { numberOfDays = 7 } = action;
@@ -25,8 +26,10 @@ function* getEvents(action) {
     });
 
     const events = response.result.items;
+    const groupedEvents = numberOfDays === 30 ? groupByWeek(events) : groupByDay(events);
+
     const payload = {
-      events,
+      events: groupedEvents,
       numberOfDays
     };
 

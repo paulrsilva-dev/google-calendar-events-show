@@ -1,11 +1,13 @@
 @import '../../styles/colors';
 
 .event {
-  max-width: 620px;
-  margin: 20px auto;
-  border: 1px solid $gray-color;
-  padding: 20px;
-  border-radius: 10px;
+  margin: 10px;
+  border-bottom: 1px solid $gray-color;
+  padding: 15px;
+
+  &:last-child{
+    border-bottom: none;
+  }
 
   .date {
     width: 15%;

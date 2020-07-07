@@ -1,0 +1,12 @@
+@import '../../styles/colors';
+
+.events-group {
+  max-width: 662px;
+  margin: 20px auto;
+  padding: 0 10px;
+
+  .group-box {
+    border: 1px solid $gray-color;
+    border-radius: 10px;
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Event from '../Event';
+import EventsGroup from '../EventsGroup';
 
 const EventsList = ({ events }) => {
   return (
@@ -11,7 +11,7 @@ const EventsList = ({ events }) => {
           You don't have upcoming events. Rest a little <span className='smile' role='img' aria-label='smile'>😊</span>
         </p>
         :
-        events && events.map(event => <Event key={event.id} event={event} />)
+        events && events.map((eventsGroup, i) => <EventsGroup key={i} group={eventsGroup} />)
       }
     </>
   )
