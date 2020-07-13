@@ -5,8 +5,9 @@ import { getEvents } from '../../store/actions/getEvents';
 
 import CalendarHeader from '../../components/CalendarHeader';
 import EventsList from '../../components/EventsList';
+import Spinner from '../../components/Spinner';
 
-const CalendarPage = ({ getEvents, numberOfDays }) => {
+const CalendarPage = ({ getEvents, numberOfDays, loading }) => {
   useEffect(() => {
     getEvents(numberOfDays);
   }, [getEvents, numberOfDays]);
@@ -14,13 +15,14 @@ const CalendarPage = ({ getEvents, numberOfDays }) => {
   return (
     <>
       <CalendarHeader />
-      <EventsList />
+      { loading ? <Spinner /> : <EventsList /> }
     </>
   )
 };
 
-const mapStateToProps = ({ events: { numberOfDays } }) => ({
-  numberOfDays
+const mapStateToProps = ({ events: { numberOfDays, loading } }) => ({
+  numberOfDays,
+  loading: loading ? loading : null
 });
 
 const mapDispatchToProps = dispatch => ({
