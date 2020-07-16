@@ -9,7 +9,7 @@ import {
 import { gapi } from '../../config';
 
 function* deleteEvent(action) {
-  const { eventId } = action;
+  const { eventId, numberOfDays } = action;
   try {
     yield gapi.client.calendar.events.delete({
       'calendarId': 'primary',
@@ -17,7 +17,7 @@ function* deleteEvent(action) {
     });
 
     yield put({ type: DELETE_EVENT_SUCCESS });
-    yield put({ type: GET_EVENTS_REQUEST });
+    yield put({ type: GET_EVENTS_REQUEST, numberOfDays });
   } catch (e) {
     console.log('Delete event saga error', e);
     yield put({ type: DELETE_EVENT_ERROR });

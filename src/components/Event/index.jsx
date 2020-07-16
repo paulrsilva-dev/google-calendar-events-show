@@ -9,7 +9,7 @@ import { deleteEvent } from '../../store/actions/deleteEvent';
 import clockIcon from '../../assets/clock.svg';
 import trashIcon from '../../assets/trash.svg';
 
-const Event = ({ event, deleteEvent }) => {
+const Event = ({ event, deleteEvent, numberOfDays }) => {
   const { id, summary, start, end } = event;
 
   const fullDate = start.date ? start.date : start.dateTime;
@@ -22,7 +22,7 @@ const Event = ({ event, deleteEvent }) => {
   const eventTime = start.date ? 'All day' : `${timeStart} - ${timeEnd}`;
 
   const handleDeleteEvent = (eventId) => {
-    if (window.confirm('Are you sure you want to delete this event?')) deleteEvent(eventId);
+    if (window.confirm('Are you sure you want to delete this event?')) deleteEvent(eventId, numberOfDays);
     return;
   }
 
@@ -48,8 +48,12 @@ const Event = ({ event, deleteEvent }) => {
   )
 };
 
-const mapDispatchToProps = dispatch => ({
-  deleteEvent: eventId => dispatch(deleteEvent(eventId))
+const mapStateToProps = ({ events: { numberOfDays } }) => ({
+  numberOfDays
 });
 
-export default connect(null, mapDispatchToProps)(Event);
+const mapDispatchToProps = dispatch => ({
+  deleteEvent: (eventId, numberOfDays) => dispatch(deleteEvent(eventId, numberOfDays))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Event);
