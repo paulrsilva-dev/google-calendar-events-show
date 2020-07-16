@@ -23,6 +23,7 @@
       outline: none;
       border: none;
       border-bottom: 1px solid $gray-color;
+      margin-bottom: 40px;
 
       &:hover,
       &:focus,
@@ -37,7 +38,7 @@
     }
   }
 
-  .time-zone {
+  .notice {
     font-size: 12px;
   }
 }

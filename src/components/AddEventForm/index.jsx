@@ -12,6 +12,9 @@ const AddEventForm = ({ addEvent, requestError }) => {
   const [eventEnd, setEventEnd] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  let maxDate = eventStart.substring(0, eventStart.length - 5);
+  maxDate = `${maxDate}23:59:59`;  
+
   const handleInputChange = e => {
     if (e.target.name === 'eventSummary') setEventSummary(e.target.value);
     if (e.target.name === 'eventStart') setEventStart(e.target.value);
@@ -54,6 +57,7 @@ const AddEventForm = ({ addEvent, requestError }) => {
       {errorMessage && <p className='error'>{errorMessage}</p>}
       {requestError && <p className='error'>{requestError}</p>}
       <form onSubmit={handleAddEvent}>
+        <label htmlFor='eventSummary'>Summary</label>
         <input
           name='eventSummary'
           type="text"
@@ -62,22 +66,31 @@ const AddEventForm = ({ addEvent, requestError }) => {
           placeholder='Event Summary'
           required={true}
         />
+
+        <label htmlFor='eventStart'>Start</label>
         <input
           name='eventStart'
           type="datetime-local"
+          placeholder='Start date and time'
           value={eventStart}
           onChange={handleInputChange}
           required={true}
         />
+
+        <label htmlFor='eventEnd'>End</label>
         <input
           name='eventEnd'
           type="datetime-local"
           value={eventEnd}
+          placeholder='End date and time'
           onChange={handleInputChange}
           required={true}
+          max={maxDate}
         />
+        
         <button type='submit'>Add Event</button>
-        <p className='time-zone'>*Time Zone: Europe/Zagreb</p>
+        <p className='notice'>*The end day can only be the same as the start day</p>
+        <p className='notice'>*Time Zone: Europe/Zagreb</p>
       </form>
     </div>
   )
