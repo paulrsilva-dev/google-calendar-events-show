@@ -8,7 +8,7 @@ const EventsList = ({ events }) => {
     <>
       {events.length === 0 ?
         <p style={{ textAlign: 'center' }}>
-          You don't have upcoming events. Rest a little <span className='smile' role='img' aria-label='smile'>😊</span>
+          You don't have upcoming events. Rest a little <span role='img' aria-label='smile'>😊</span>
         </p>
         :
         events && events.map((eventsGroup, i) => <EventsGroup key={i} group={eventsGroup} />)
