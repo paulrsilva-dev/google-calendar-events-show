@@ -10,7 +10,7 @@ It is possible to add new events and delete existing ones.
 The application was created using: React JS, Redux, redux-saga, react-router-dom, Moment.js, SASS and Google Calendar API (v3).
 
 ## Preview
-![google-calendar](https://user-images.githubusercontent.com/22341530/82894480-ecf78300-9f52-11ea-8489-e2e755b32d3d.gif)
+![Google-Calendar](https://user-images.githubusercontent.com/22341530/82998585-36ee7080-a008-11ea-90cf-8bfb41688cd5.gif)
 
 ## Installation
 1. Download or clone the project
