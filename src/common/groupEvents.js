@@ -2,7 +2,9 @@ import moment from 'moment';
 
 export const groupByDay = events => {
   const groups = events.reduce((groups, event) => {
-    const startDate = event.start.dateTime ? event.start.dateTime.split('T')[0] : event.start.date;
+    const startDate = event.start.dateTime
+      ? event.start.dateTime.split('T')[0]
+      : event.start.date;
 
     if (!groups[startDate]) {
       groups[startDate] = [];
@@ -15,7 +17,7 @@ export const groupByDay = events => {
   const groupArrays = Object.keys(groups).map(startDate => {
     return {
       startDate,
-      events: groups[startDate]
+      events: groups[startDate],
     };
   });
 
@@ -24,12 +26,20 @@ export const groupByDay = events => {
 
 export const groupByWeek = events => {
   const groups = events.reduce((groups, event) => {
-    const startDate = event.start.dateTime ? event.start.dateTime.split('T')[0] : event.start.date;
+    const startDate = event.start.dateTime
+      ? event.start.dateTime.split('T')[0]
+      : event.start.date;
 
     const weekNumber = moment(startDate).get('isoweek');
 
-    const startWeekDate = moment().isoWeek(weekNumber).startOf('isoweek').format('DD.MM.YYYY.');
-    const endWeekDate = moment().isoWeek(weekNumber).endOf('isoweek').format('DD.MM.YYYY.');
+    const startWeekDate = moment()
+      .isoWeek(weekNumber)
+      .startOf('isoweek')
+      .format('DD.MM.YYYY.');
+    const endWeekDate = moment()
+      .isoWeek(weekNumber)
+      .endOf('isoweek')
+      .format('DD.MM.YYYY.');
     const startAndEndWeekDates = `${startWeekDate} - ${endWeekDate}`;
 
     if (!groups[startAndEndWeekDates]) {
@@ -43,7 +53,7 @@ export const groupByWeek = events => {
   const groupArrays = Object.keys(groups).map(startDate => {
     return {
       startDate,
-      events: groups[startDate]
+      events: groups[startDate],
     };
   });
 

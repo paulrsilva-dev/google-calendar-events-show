@@ -6,7 +6,7 @@
   border-bottom: 1px solid $gray-color;
   padding: 15px;
 
-  &:last-child{
+  &:last-child {
     border-bottom: none;
   }
 
@@ -20,7 +20,7 @@
       margin: 0;
       margin-bottom: 7px;
     }
-  };
+  }
 
   .info {
     width: 70%;
@@ -46,8 +46,8 @@
       width: 14px;
       margin-right: 10px;
     }
-  };
-};
+  }
+}
 
 @include mobile {
   .event {

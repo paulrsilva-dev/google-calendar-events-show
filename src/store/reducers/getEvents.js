@@ -6,53 +6,53 @@ import {
   SIGN_IN_SUCCESS,
   DELETE_EVENT_REQUEST,
   DELETE_EVENT_SUCCESS,
-  DELETE_EVENT_ERROR
+  DELETE_EVENT_ERROR,
 } from '../actions/types';
 
 const INITIAL_STATE = {
   events: [],
   numberOfDays: 7,
-  error: null
+  error: null,
 };
 
 const getEventsReducer = (state = INITIAL_STATE, action) => {
   const newState = { ...state };
 
-  switch (action.type){
+  switch (action.type) {
     case DELETE_EVENT_REQUEST:
     case GET_EVENTS_REQUEST:
       return {
         ...newState,
-        loading: true
-      }
+        loading: true,
+      };
     case GET_EVENTS_SUCCESS:
       return {
         ...newState,
         events: action.payload.events,
         numberOfDays: action.payload.numberOfDays,
         error: null,
-        loading: false
-      }
+        loading: false,
+      };
     case GET_EVENTS_ERROR:
       return {
         ...newState,
         error: action.error,
-        loading: false
-      }
+        loading: false,
+      };
     case DELETE_EVENT_SUCCESS:
     case DELETE_EVENT_ERROR:
       return {
         ...newState,
-        loading: false
-      }
+        loading: false,
+      };
     case SIGN_OUT_SUCCESS:
     case SIGN_IN_SUCCESS:
       return {
         ...newState,
         events: [],
         numberOfDays: 7,
-        error: null
-      }
+        error: null,
+      };
     default:
       return newState;
   }

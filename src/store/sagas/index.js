@@ -1,14 +1,9 @@
 import { all, call } from 'redux-saga/effects';
 
-import {
-  onLoadClient,
-  onSignIn,
-  onSignOut
-} from './auth';
-
-import { onGetEvents } from './getEvents';
-import { onDeleteEvent } from './deleteEvent';
 import { onAddEvent } from './addEvent';
+import { onLoadClient, onSignIn, onSignOut } from './auth';
+import { onDeleteEvent } from './deleteEvent';
+import { onGetEvents } from './getEvents';
 
 export default function* rootSaga() {
   yield all([
@@ -17,6 +12,6 @@ export default function* rootSaga() {
     call(onSignOut),
     call(onGetEvents),
     call(onDeleteEvent),
-    call(onAddEvent)
+    call(onAddEvent),
   ]);
 }

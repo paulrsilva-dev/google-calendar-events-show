@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import './styles.scss';
-
 import { checkInputDates } from '../../common';
 import { addEvent } from '../../store/actions/addEvent';
+
+import './styles.scss';
 
 const AddEventForm = ({ addEvent, requestError }) => {
   const [eventSummary, setEventSummary] = useState('');
@@ -13,7 +13,7 @@ const AddEventForm = ({ addEvent, requestError }) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   let maxDate = eventStart.substring(0, eventStart.length - 5);
-  maxDate = `${maxDate}23:59:59`;  
+  maxDate = `${maxDate}23:59:59`;
 
   const handleInputChange = e => {
     if (e.target.name === 'eventSummary') setEventSummary(e.target.value);
@@ -24,18 +24,18 @@ const AddEventForm = ({ addEvent, requestError }) => {
   const handleAddEvent = e => {
     e.preventDefault();
     const startDateBeforeEndDate = checkInputDates(eventStart, eventEnd);
-    
+
     if (startDateBeforeEndDate) {
       const event = {
-        'summary': eventSummary,
-        'start': {
-          'dateTime': `${eventStart}:00`,
-          'timeZone': 'Europe/Zagreb'
+        summary: eventSummary,
+        start: {
+          dateTime: `${eventStart}:00`,
+          timeZone: 'Europe/Zagreb',
         },
-        'end': {
-          'dateTime': `${eventEnd}:00`,
-          'timeZone': 'Europe/Zagreb'
-        }
+        end: {
+          dateTime: `${eventEnd}:00`,
+          timeZone: 'Europe/Zagreb',
+        },
       };
 
       addEvent(event);
@@ -60,7 +60,7 @@ const AddEventForm = ({ addEvent, requestError }) => {
         <label htmlFor='eventSummary'>Summary</label>
         <input
           name='eventSummary'
-          type="text"
+          type='text'
           value={eventSummary}
           onChange={handleInputChange}
           placeholder='Event Summary'
@@ -70,7 +70,7 @@ const AddEventForm = ({ addEvent, requestError }) => {
         <label htmlFor='eventStart'>Start</label>
         <input
           name='eventStart'
-          type="datetime-local"
+          type='datetime-local'
           placeholder='Start date and time'
           value={eventStart}
           onChange={handleInputChange}
@@ -80,28 +80,30 @@ const AddEventForm = ({ addEvent, requestError }) => {
         <label htmlFor='eventEnd'>End</label>
         <input
           name='eventEnd'
-          type="datetime-local"
+          type='datetime-local'
           value={eventEnd}
           placeholder='End date and time'
           onChange={handleInputChange}
           required={true}
           max={maxDate}
         />
-        
+
         <button type='submit'>Add Event</button>
-        <p className='notice'>*The end day can only be the same as the start day</p>
+        <p className='notice'>
+          *The end day can only be the same as the start day
+        </p>
         <p className='notice'>*Time Zone: Europe/Zagreb</p>
       </form>
     </div>
-  )
+  );
 };
 
 const mapStateToProps = ({ newEvent: { error } }) => ({
-  requestError: error
+  requestError: error,
 });
 
 const mapDispatchToProps = dispatch => ({
-  addEvent: event => dispatch(addEvent(event))
+  addEvent: event => dispatch(addEvent(event)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddEventForm);

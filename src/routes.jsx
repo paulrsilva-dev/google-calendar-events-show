@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import ProtectedRoute from './components/ProtectedRoute';
-import HomePage from './pages/HomePage';
-import CalendarPage from './pages/CalendarPage';
 import AddEventPage from './pages/AddEventPage';
+import CalendarPage from './pages/CalendarPage';
+import HomePage from './pages/HomePage';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const createRoutes = () => (
   <Switch>
@@ -14,6 +14,5 @@ const createRoutes = () => (
     <Route path='*' render={() => '404 Page Not Found'} />
   </Switch>
 );
-
 
 export default createRoutes;

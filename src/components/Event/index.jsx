@@ -1,13 +1,12 @@
+import moment from 'moment';
 import React from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment';
-
-import './styles.scss';
 
 import { deleteEvent } from '../../store/actions/deleteEvent';
-
 import clockIcon from '../../assets/clock.svg';
 import trashIcon from '../../assets/trash.svg';
+
+import './styles.scss';
 
 const Event = ({ event, deleteEvent, numberOfDays }) => {
   const { id, summary, start, end } = event;
@@ -21,10 +20,11 @@ const Event = ({ event, deleteEvent, numberOfDays }) => {
   const timeEnd = start.date ? null : moment(end.dateTime).format('HH:mm');
   const eventTime = start.date ? 'All day' : `${timeStart} - ${timeEnd}`;
 
-  const handleDeleteEvent = (eventId) => {
-    if (window.confirm('Are you sure you want to delete this event?')) deleteEvent(eventId, numberOfDays);
+  const handleDeleteEvent = eventId => {
+    if (window.confirm('Are you sure you want to delete this event?'))
+      deleteEvent(eventId, numberOfDays);
     return;
-  }
+  };
 
   return (
     <div className='event'>
@@ -45,15 +45,16 @@ const Event = ({ event, deleteEvent, numberOfDays }) => {
         </p>
       </div>
     </div>
-  )
+  );
 };
 
 const mapStateToProps = ({ events: { numberOfDays } }) => ({
-  numberOfDays
+  numberOfDays,
 });
 
 const mapDispatchToProps = dispatch => ({
-  deleteEvent: (eventId, numberOfDays) => dispatch(deleteEvent(eventId, numberOfDays))
+  deleteEvent: (eventId, numberOfDays) =>
+    dispatch(deleteEvent(eventId, numberOfDays)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Event);

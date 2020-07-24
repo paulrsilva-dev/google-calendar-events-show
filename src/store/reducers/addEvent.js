@@ -2,46 +2,46 @@ import {
   ADD_EVENT_REQUEST,
   ADD_EVENT_SUCCESS,
   ADD_EVENT_ERROR,
-  SIGN_OUT_SUCCESS
+  SIGN_OUT_SUCCESS,
 } from '../actions/types';
 
 const INITIAL_STATE = {
   newEvent: {},
-  error: null
+  error: null,
 };
 
 const addEventReducer = (state = INITIAL_STATE, action) => {
   const newState = { ...state };
 
-  switch (action.type){
+  switch (action.type) {
     case ADD_EVENT_REQUEST:
       return {
         ...newState,
-        loading: true
-      }
+        loading: true,
+      };
     case ADD_EVENT_SUCCESS:
       return {
         ...newState,
         newEvent: action.event,
         error: null,
-        loading: false
-      }
+        loading: false,
+      };
     case ADD_EVENT_ERROR:
       return {
         ...newState,
         newEvent: action.payload.event,
         error: action.payload.error,
-        loading: false
-      }
+        loading: false,
+      };
     case SIGN_OUT_SUCCESS:
       return {
         ...newState,
         newEvent: {},
-        error: null
-      }
+        error: null,
+      };
     default:
       return newState;
   }
-}
+};
 
 export default addEventReducer;

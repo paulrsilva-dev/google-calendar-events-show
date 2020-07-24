@@ -15,8 +15,8 @@ const ProtectedRoute = ({ isSignedIn, component: Component, ...rest }) => {
               to={{
                 pathname: '/',
                 state: {
-                  from: props.location
-                }
+                  from: props.location,
+                },
               }}
             />
           );
@@ -27,7 +27,7 @@ const ProtectedRoute = ({ isSignedIn, component: Component, ...rest }) => {
 };
 
 const mapStateToProps = ({ auth: { isSignedIn } }) => ({
-  isSignedIn
+  isSignedIn,
 });
 
 export default connect(mapStateToProps)(ProtectedRoute);

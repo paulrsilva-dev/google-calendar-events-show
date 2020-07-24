@@ -7,5 +7,5 @@ import addEventReducer from './addEvent';
 export default combineReducers({
   auth: authReducer,
   events: getEventsReducer,
-  newEvent: addEventReducer
+  newEvent: addEventReducer,
 });

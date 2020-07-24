@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import { signOut } from '../../store/actions/auth';
+import { getEvents } from '../../store/actions/getEvents';
 
 import './styles.scss';
-
-import { getEvents } from '../../store/actions/getEvents';
-import { signOut } from '../../store/actions/auth';
 
 const CalendarHeader = ({ getEvents, signOut, numberOfDays }) => {
   const handleNumberOfDays = e => {
@@ -25,19 +25,20 @@ const CalendarHeader = ({ getEvents, signOut, numberOfDays }) => {
       <button className='add-new'>
         <Link to='/add-event'>Add Event</Link>
       </button>
-      <button className='sign-out' onClick={signOut}>Sign Out</button>
+      <button className='sign-out' onClick={signOut}>
+        Sign Out
+      </button>
     </header>
-  )
+  );
 };
 
 const mapStateToProps = ({ events: { numberOfDays } }) => ({
-  numberOfDays
+  numberOfDays,
 });
 
 const mapDispatchToProps = dispatch => ({
   getEvents: selectedDayNumber => dispatch(getEvents(selectedDayNumber)),
-  signOut: () => dispatch(signOut())
+  signOut: () => dispatch(signOut()),
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalendarHeader);
