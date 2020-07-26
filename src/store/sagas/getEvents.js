@@ -5,7 +5,7 @@ import {
   GET_EVENTS_SUCCESS,
   GET_EVENTS_ERROR,
 } from '../actions/types';
-import { groupByDay, groupByWeek } from '../../common/groupEvents';
+import { groupByDay, groupByWeek } from '../../utils';
 import { gapi } from '../../config';
 
 function* getEvents(action) {

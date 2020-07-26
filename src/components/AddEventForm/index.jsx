@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { checkInputDates } from '../../common';
+import { checkInputDates } from '../../utils';
 import { addEvent } from '../../store/actions/addEvent';
 
 import './styles.scss';
