@@ -19,7 +19,6 @@ function* addEvent(action) {
     yield put({ type: ADD_EVENT_SUCCESS, event });
     history.push('/calendar');
   } catch (e) {
-    console.log('Add event saga error', e);
     const payload = {
       event,
       error: e.result.error.message,

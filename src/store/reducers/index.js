@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
+import addEventReducer from './addEvent';
 import authReducer from './auth';
 import getEventsReducer from './getEvents';
-import addEventReducer from './addEvent';
 
 export default combineReducers({
   auth: authReducer,

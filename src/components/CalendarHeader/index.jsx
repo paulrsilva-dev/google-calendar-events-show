@@ -10,6 +10,7 @@ import './styles.scss';
 const CalendarHeader = ({ getEvents, signOut, numberOfDays }) => {
   const handleNumberOfDays = e => {
     e.preventDefault();
+
     const selectedDayNumber = parseInt(e.target.value);
     getEvents(selectedDayNumber);
   };
@@ -22,9 +23,9 @@ const CalendarHeader = ({ getEvents, signOut, numberOfDays }) => {
         <option value='7'>next 7 days</option>
         <option value='30'>next 30 days</option>
       </select>
-      <button className='add-new'>
-        <Link to='/add-event'>Add Event</Link>
-      </button>
+      <Link to='/calendar/add-event'>
+        <button className='add-new'>Add Event</button>
+      </Link>
       <button className='sign-out' onClick={signOut}>
         Sign Out
       </button>

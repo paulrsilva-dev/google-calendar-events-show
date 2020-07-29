@@ -1,12 +1,10 @@
 import React from 'react';
 
 import './App.css';
-import createRoutes from './routes';
-
-const routes = createRoutes();
+import Routes from './routes';
 
 function App() {
-  return <>{routes}</>;
+  return <Routes />;
 }
 
 export default App;

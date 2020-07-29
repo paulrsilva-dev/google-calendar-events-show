@@ -15,12 +15,6 @@ const AddEventForm = ({ addEvent, requestError }) => {
   let maxDate = eventStart.substring(0, eventStart.length - 5);
   maxDate = `${maxDate}23:59:59`;
 
-  const handleInputChange = e => {
-    if (e.target.name === 'eventSummary') setEventSummary(e.target.value);
-    if (e.target.name === 'eventStart') setEventStart(e.target.value);
-    if (e.target.name === 'eventEnd') setEventEnd(e.target.value);
-  };
-
   const handleAddEvent = e => {
     e.preventDefault();
     const startDateBeforeEndDate = checkInputDates(eventStart, eventEnd);
@@ -56,15 +50,16 @@ const AddEventForm = ({ addEvent, requestError }) => {
     <div className='add-event-form'>
       {errorMessage && <p className='error'>{errorMessage}</p>}
       {requestError && <p className='error'>{requestError}</p>}
+
       <form onSubmit={handleAddEvent}>
         <label htmlFor='eventSummary'>Summary</label>
         <input
           name='eventSummary'
           type='text'
           value={eventSummary}
-          onChange={handleInputChange}
+          onChange={e => setEventSummary(e.target.value)}
           placeholder='Event Summary'
-          required={true}
+          required
         />
 
         <label htmlFor='eventStart'>Start</label>
@@ -73,8 +68,8 @@ const AddEventForm = ({ addEvent, requestError }) => {
           type='datetime-local'
           placeholder='Start date and time'
           value={eventStart}
-          onChange={handleInputChange}
-          required={true}
+          onChange={e => setEventStart(e.target.value)}
+          required
         />
 
         <label htmlFor='eventEnd'>End</label>
@@ -83,8 +78,8 @@ const AddEventForm = ({ addEvent, requestError }) => {
           type='datetime-local'
           value={eventEnd}
           placeholder='End date and time'
-          onChange={handleInputChange}
-          required={true}
+          onChange={e => setEventEnd(e.target.value)}
+          required
           max={maxDate}
         />
 

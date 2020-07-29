@@ -6,7 +6,7 @@ import EventsGroup from '../EventsGroup';
 const EventsList = ({ events }) => {
   return (
     <>
-      {events.length === 0 ? (
+      {!events.length ? (
         <p style={{ textAlign: 'center' }}>
           You don't have upcoming events. Rest a little{' '}
           <span role='img' aria-label='smile'>

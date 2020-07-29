@@ -20,8 +20,12 @@ const Event = ({ event, deleteEvent, numberOfDays }) => {
   const eventTime = start.date ? 'All day' : `${timeStart} - ${timeEnd}`;
 
   const handleDeleteEvent = eventId => {
-    if (window.confirm('Are you sure you want to delete this event?'))
-      deleteEvent(eventId, numberOfDays);
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete this event?'
+    );
+
+    if (confirmDelete) deleteEvent(eventId, numberOfDays);
+
     return;
   };
 

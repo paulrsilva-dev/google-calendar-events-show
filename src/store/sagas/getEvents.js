@@ -38,7 +38,6 @@ function* getEvents(action) {
 
     yield put({ type: GET_EVENTS_SUCCESS, payload });
   } catch (e) {
-    console.log('get events saga error', e);
     const error = e.result.error.message;
     yield put({ type: GET_EVENTS_ERROR, error });
   }
