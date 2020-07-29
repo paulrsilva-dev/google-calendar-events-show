@@ -3,8 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { deleteEvent } from '../../store/actions/deleteEvent';
-import clockIcon from '../../assets/clock.svg';
-import trashIcon from '../../assets/trash.svg';
+import { clockIcon, trashIcon } from '../../assets';
 
 import './styles.scss';
 
